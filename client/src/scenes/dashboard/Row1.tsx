@@ -1,4 +1,5 @@
 import DashboardBox from '@/components/DashboardBox'
+import { useGetKpisQuery } from '@/state/api'
 import React from 'react'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -6,6 +7,8 @@ type Props = {}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Row1 = (props: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const {data} = useGetKpisQuery();
   return (
     <>
       <DashboardBox gridArea="a"></DashboardBox>
