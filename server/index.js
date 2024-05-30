@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import kpiRoutes from './routes/kpi.js';
 
 // Configurations
 
@@ -17,6 +18,10 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
+
+// routes
+app.use("/kpi",kpiRoutes);
 
 // mongoose setup
 
