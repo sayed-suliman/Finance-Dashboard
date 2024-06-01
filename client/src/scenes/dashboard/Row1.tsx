@@ -9,6 +9,7 @@ type Props = {}
 const Row1 = (props: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const {data} = useGetKpisQuery();
+  console.log('data : ', data)
   return (
     <>
       <DashboardBox gridArea="a"></DashboardBox>
