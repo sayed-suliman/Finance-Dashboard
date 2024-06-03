@@ -1,6 +1,6 @@
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Area,
   AreaChart,
@@ -18,6 +18,20 @@ type Props = {};
 const Row1 = (props: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data } = useGetKpisQuery();
+
+  // configure data for chart
+  const revenueExpenses = useMemo(() => {
+    return (
+      data &&
+      data[0].monthlyData.map(({ month, revenue, expenses }) => {
+        return {
+          name: month.substring(0, 3),
+          revenue: revenue,
+          expenses: expenses,
+        };
+      })
+    );
+  }, [data]);
   return (
     <>
       <DashboardBox gridArea="a">
@@ -25,7 +39,7 @@ const Row1 = (props: Props) => {
           <AreaChart
             width={500}
             height={400}
-            data = {data}
+            data={data}
             margin={{
               top: 10,
               right: 30,
